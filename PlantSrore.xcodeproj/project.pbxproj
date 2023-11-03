@@ -7,23 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		871AC9FE2AEA710600EE35C6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 871AC9FD2AEA710600EE35C6 /* SnapKit */; };
+		871ACA002AEA710600EE35C6 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 871AC9FF2AEA710600EE35C6 /* SnapKit-Dynamic */; };
+		873BB6282AE7F3F500961FC4 /* PlantDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873BB6272AE7F3F500961FC4 /* PlantDetailsViewModel.swift */; };
+		873BB62A2AE8530900961FC4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873BB6292AE8530900961FC4 /* DataManager.swift */; };
+		873BB6302AE95C0F00961FC4 /* PlantCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873BB62F2AE95C0F00961FC4 /* PlantCollectionViewModel.swift */; };
+		873BB6322AE9AD7900961FC4 /* PlantCellViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873BB6312AE9AD7900961FC4 /* PlantCellViewModal.swift */; };
+		8776077F2ADEB6C8002565A5 /* PlantDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8776077E2ADEB6C8002565A5 /* PlantDetailsViewController.swift */; };
+		877607842ADEBC75002565A5 /* FavoritesViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877607832ADEBC75002565A5 /* FavoritesViewControllerViewController.swift */; };
 		87E3131D2ADC453900761FC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E3131C2ADC453900761FC0 /* AppDelegate.swift */; };
 		87E3131F2ADC453900761FC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E3131E2ADC453900761FC0 /* SceneDelegate.swift */; };
-		87E313212ADC453900761FC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E313202ADC453900761FC0 /* ViewController.swift */; };
-		87E313242ADC453900761FC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87E313222ADC453900761FC0 /* Main.storyboard */; };
+		87E313212ADC453900761FC0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E313202ADC453900761FC0 /* TabBarController.swift */; };
 		87E313262ADC453B00761FC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87E313252ADC453B00761FC0 /* Assets.xcassets */; };
 		87E313292ADC453B00761FC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87E313272ADC453B00761FC0 /* LaunchScreen.storyboard */; };
+		87E313352ADC5C5200761FC0 /* PlantCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E313342ADC5C5200761FC0 /* PlantCollectionViewController.swift */; };
+		87E313372ADC725300761FC0 /* PlantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E313362ADC725300761FC0 /* PlantCell.swift */; };
+		87E313392ADC750500761FC0 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E313382ADC750500761FC0 /* Plant.swift */; };
+		87E3133D2ADDCD5700761FC0 /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E3133C2ADDCD5700761FC0 /* Extension + UIColor.swift */; };
+		87E998062AF0F284005EE1CD /* Extension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E998052AF0F284005EE1CD /* Extension + UIViewController.swift */; };
+		87E9980B2AF37B69005EE1CD /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E9980A2AF37B69005EE1CD /* CartViewModel.swift */; };
+		87E9980D2AF37BB5005EE1CD /* CartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E9980C2AF37BB5005EE1CD /* CartTableViewController.swift */; };
+		87E998102AF382F4005EE1CD /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E9980F2AF382F4005EE1CD /* CartCell.swift */; };
+		87E998122AF38321005EE1CD /* CartCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E998112AF38321005EE1CD /* CartCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		873BB6272AE7F3F500961FC4 /* PlantDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsViewModel.swift; sourceTree = "<group>"; };
+		873BB6292AE8530900961FC4 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		873BB62F2AE95C0F00961FC4 /* PlantCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCollectionViewModel.swift; sourceTree = "<group>"; };
+		873BB6312AE9AD7900961FC4 /* PlantCellViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCellViewModal.swift; sourceTree = "<group>"; };
+		8776077E2ADEB6C8002565A5 /* PlantDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsViewController.swift; sourceTree = "<group>"; };
+		877607832ADEBC75002565A5 /* FavoritesViewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewControllerViewController.swift; sourceTree = "<group>"; };
 		87E313192ADC453900761FC0 /* PlantSrore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantSrore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E3131C2ADC453900761FC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87E3131E2ADC453900761FC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		87E313202ADC453900761FC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		87E313232ADC453900761FC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		87E313202ADC453900761FC0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		87E313252ADC453B00761FC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87E313282ADC453B00761FC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87E3132A2ADC453B00761FC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87E313342ADC5C5200761FC0 /* PlantCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCollectionViewController.swift; sourceTree = "<group>"; };
+		87E313362ADC725300761FC0 /* PlantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCell.swift; sourceTree = "<group>"; };
+		87E313382ADC750500761FC0 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		87E3133C2ADDCD5700761FC0 /* Extension + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
+		87E998052AF0F284005EE1CD /* Extension + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIViewController.swift"; sourceTree = "<group>"; };
+		87E9980A2AF37B69005EE1CD /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		87E9980C2AF37BB5005EE1CD /* CartTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewController.swift; sourceTree = "<group>"; };
+		87E9980F2AF382F4005EE1CD /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
+		87E998112AF38321005EE1CD /* CartCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,12 +61,68 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				871AC9FE2AEA710600EE35C6 /* SnapKit in Frameworks */,
+				871ACA002AEA710600EE35C6 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		871ACA012AEBAC5E00EE35C6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				873BB6292AE8530900961FC4 /* DataManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		873BB62B2AE9581E00961FC4 /* PlantCollection */ = {
+			isa = PBXGroup;
+			children = (
+				87E313342ADC5C5200761FC0 /* PlantCollectionViewController.swift */,
+				873BB62F2AE95C0F00961FC4 /* PlantCollectionViewModel.swift */,
+				873BB62E2AE95B5800961FC4 /* PlantCell */,
+			);
+			path = PlantCollection;
+			sourceTree = "<group>";
+		};
+		873BB62C2AE9584200961FC4 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				87E9980C2AF37BB5005EE1CD /* CartTableViewController.swift */,
+				87E9980A2AF37B69005EE1CD /* CartViewModel.swift */,
+				87E9980E2AF37EEA005EE1CD /* CartCell */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		873BB62D2AE9585500961FC4 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				877607832ADEBC75002565A5 /* FavoritesViewControllerViewController.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		873BB62E2AE95B5800961FC4 /* PlantCell */ = {
+			isa = PBXGroup;
+			children = (
+				87E313362ADC725300761FC0 /* PlantCell.swift */,
+				873BB6312AE9AD7900961FC4 /* PlantCellViewModal.swift */,
+			);
+			path = PlantCell;
+			sourceTree = "<group>";
+		};
+		877607802ADEB6E8002565A5 /* PlantDetails */ = {
+			isa = PBXGroup;
+			children = (
+				8776077E2ADEB6C8002565A5 /* PlantDetailsViewController.swift */,
+				873BB6272AE7F3F500961FC4 /* PlantDetailsViewModel.swift */,
+			);
+			path = PlantDetails;
+			sourceTree = "<group>";
+		};
 		87E313102ADC453900761FC0 = {
 			isa = PBXGroup;
 			children = (
@@ -58,13 +144,37 @@
 			children = (
 				87E3131C2ADC453900761FC0 /* AppDelegate.swift */,
 				87E3131E2ADC453900761FC0 /* SceneDelegate.swift */,
-				87E313202ADC453900761FC0 /* ViewController.swift */,
-				87E313222ADC453900761FC0 /* Main.storyboard */,
+				87E998092AF370F7005EE1CD /* TabBar */,
+				873BB62B2AE9581E00961FC4 /* PlantCollection */,
+				873BB62C2AE9584200961FC4 /* Cart */,
+				873BB62D2AE9585500961FC4 /* Favorites */,
+				877607802ADEB6E8002565A5 /* PlantDetails */,
+				871ACA012AEBAC5E00EE35C6 /* Services */,
+				87E313382ADC750500761FC0 /* Plant.swift */,
+				87E3133C2ADDCD5700761FC0 /* Extension + UIColor.swift */,
+				87E998052AF0F284005EE1CD /* Extension + UIViewController.swift */,
 				87E313252ADC453B00761FC0 /* Assets.xcassets */,
 				87E313272ADC453B00761FC0 /* LaunchScreen.storyboard */,
 				87E3132A2ADC453B00761FC0 /* Info.plist */,
 			);
 			path = PlantSrore;
+			sourceTree = "<group>";
+		};
+		87E998092AF370F7005EE1CD /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				87E313202ADC453900761FC0 /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		87E9980E2AF37EEA005EE1CD /* CartCell */ = {
+			isa = PBXGroup;
+			children = (
+				87E9980F2AF382F4005EE1CD /* CartCell.swift */,
+				87E998112AF38321005EE1CD /* CartCellViewModel.swift */,
+			);
+			path = CartCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +193,10 @@
 			dependencies = (
 			);
 			name = PlantSrore;
+			packageProductDependencies = (
+				871AC9FD2AEA710600EE35C6 /* SnapKit */,
+				871AC9FF2AEA710600EE35C6 /* SnapKit-Dynamic */,
+			);
 			productName = PlantSrore;
 			productReference = 87E313192ADC453900761FC0 /* PlantSrore.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +225,9 @@
 				Base,
 			);
 			mainGroup = 87E313102ADC453900761FC0;
+			packageReferences = (
+				871AC9FC2AEA710600EE35C6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 87E3131A2ADC453900761FC0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +244,6 @@
 			files = (
 				87E313292ADC453B00761FC0 /* LaunchScreen.storyboard in Resources */,
 				87E313262ADC453B00761FC0 /* Assets.xcassets in Resources */,
-				87E313242ADC453900761FC0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +254,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87E313212ADC453900761FC0 /* ViewController.swift in Sources */,
+				87E998062AF0F284005EE1CD /* Extension + UIViewController.swift in Sources */,
+				873BB6302AE95C0F00961FC4 /* PlantCollectionViewModel.swift in Sources */,
+				8776077F2ADEB6C8002565A5 /* PlantDetailsViewController.swift in Sources */,
+				877607842ADEBC75002565A5 /* FavoritesViewControllerViewController.swift in Sources */,
+				87E998122AF38321005EE1CD /* CartCellViewModel.swift in Sources */,
+				87E9980B2AF37B69005EE1CD /* CartViewModel.swift in Sources */,
+				87E9980D2AF37BB5005EE1CD /* CartTableViewController.swift in Sources */,
+				87E3133D2ADDCD5700761FC0 /* Extension + UIColor.swift in Sources */,
+				87E313212ADC453900761FC0 /* TabBarController.swift in Sources */,
+				873BB6322AE9AD7900961FC4 /* PlantCellViewModal.swift in Sources */,
+				87E313392ADC750500761FC0 /* Plant.swift in Sources */,
+				873BB6282AE7F3F500961FC4 /* PlantDetailsViewModel.swift in Sources */,
+				87E998102AF382F4005EE1CD /* CartCell.swift in Sources */,
+				87E313372ADC725300761FC0 /* PlantCell.swift in Sources */,
 				87E3131D2ADC453900761FC0 /* AppDelegate.swift in Sources */,
+				87E313352ADC5C5200761FC0 /* PlantCollectionViewController.swift in Sources */,
+				873BB62A2AE8530900961FC4 /* DataManager.swift in Sources */,
 				87E3131F2ADC453900761FC0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +278,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		87E313222ADC453900761FC0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				87E313232ADC453900761FC0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		87E313272ADC453B00761FC0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -297,9 +420,8 @@
 				INFOPLIST_FILE = PlantSrore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,9 +429,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = AlekseyBu.PlantSrore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -325,9 +450,8 @@
 				INFOPLIST_FILE = PlantSrore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,9 +459,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = AlekseyBu.PlantSrore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -363,6 +490,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		871AC9FC2AEA710600EE35C6 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		871AC9FD2AEA710600EE35C6 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 871AC9FC2AEA710600EE35C6 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		871AC9FF2AEA710600EE35C6 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 871AC9FC2AEA710600EE35C6 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 87E313112ADC453900761FC0 /* Project object */;
 }

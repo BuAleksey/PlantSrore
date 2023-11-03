@@ -1,0 +1,110 @@
+//
+//  TabBarController.swift
+//  PlantSrore
+//
+//  Created by Buba on 15.10.2023.
+//
+
+import UIKit
+
+enum TabBarItems {
+    case store
+    case cart
+    case favorites
+    
+    var tabBarTitle: String {
+        switch self {
+        case .store:
+            "Store"
+        case .cart:
+            "Cart"
+        case .favorites:
+            "Favorites"
+        }
+    }
+    
+    var tabBarImageName: String {
+        switch self {
+        case .store:
+            "camera.macro.circle"
+        case .cart:
+            "cart.circle"
+        case .favorites:
+            "heart"
+        }
+    }
+}
+
+class TabBarController: UITabBarController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setTabBarAppearance()
+        generateTabBar()
+    }
+    
+    private func generateTabBar() {
+        let items: [TabBarItems] = [.store, .cart, .favorites]
+        
+        viewControllers = items.map { item in
+            switch item {
+            case .store:
+                let plantCollection = generateStoreCollection()
+                let store = UINavigationController(rootViewController: plantCollection)
+                store.title = item.tabBarTitle
+                store.tabBarItem.image = UIImage(systemName: item.tabBarImageName)
+                return store
+            case .cart:
+                let cart = UINavigationController(rootViewController: CartTableViewController())
+                cart.title = item.tabBarTitle
+                cart.tabBarItem.image = UIImage(systemName: item.tabBarImageName)
+                return cart
+            case .favorites:
+                let settings = UINavigationController(rootViewController: FavoritesViewController())
+                settings.title = item.tabBarTitle
+                settings.tabBarItem.image = UIImage(systemName: item.tabBarImageName)
+                return settings
+            }
+        }
+    }
+    
+    private func generateStoreCollection() -> UIViewController {
+        let layout = UICollectionViewFlowLayout()
+        let widthItem = view.layer.bounds.width / 2 - 24
+        let heightItem = widthItem + widthItem / 2
+        layout.itemSize = .init(width: widthItem, height: heightItem)
+        layout.minimumLineSpacing = 8
+        layout.minimumInteritemSpacing = 8
+        layout.sectionInset = .init(top: 16, left: 16, bottom: 35, right: 16)
+        let viewController = PlantCollectionViewController(collectionViewLayout: layout)
+        return viewController
+    }
+    
+    private func setTabBarAppearance() {
+        tabBar.backgroundImage = UIImage()
+        tabBar.backgroundColor = .clear
+        tabBar.shadowImage = UIImage()
+        
+        let positionOnX: CGFloat = 10
+        let positionOnY: CGFloat = 16
+        
+        let wight = tabBar.bounds.width - positionOnX * 2
+        let height = tabBar.bounds.height + positionOnY * 2
+        
+        let roundLayer = CAShapeLayer()
+        let bezierPath = UIBezierPath(
+            roundedRect: CGRect(
+                x: positionOnX,
+                y: tabBar.bounds.minY - positionOnY,
+                width: wight,
+                height: height
+            ),
+            cornerRadius: height / 2
+        )
+        roundLayer.fillColor = UIColor.white.cgColor
+        roundLayer.path = bezierPath.cgPath
+        tabBar.layer.insertSublayer(roundLayer, at: 0)
+        
+        tabBar.tintColor = .tabbarGreenItem
+        tabBar.unselectedItemTintColor = .tabbarGrayItem
+    }
+}
