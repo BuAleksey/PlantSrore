@@ -14,10 +14,11 @@ protocol CartTableViewModelProtocol {
 }
 
 final class CartTableViewModel: CartTableViewModelProtocol {
+    private let data = DataManager.shared
     private var plants: [Plant] = []
     
     func fetchPlants(complition: @escaping () -> Void) {
-        plants = DataManager.shared.cart
+        plants = data.cart
         complition()
     }
     

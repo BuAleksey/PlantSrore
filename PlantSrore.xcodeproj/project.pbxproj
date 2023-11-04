@@ -20,7 +20,7 @@
 		87E313212ADC453900761FC0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E313202ADC453900761FC0 /* TabBarController.swift */; };
 		87E313262ADC453B00761FC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87E313252ADC453B00761FC0 /* Assets.xcassets */; };
 		87E313292ADC453B00761FC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87E313272ADC453B00761FC0 /* LaunchScreen.storyboard */; };
-		87E313352ADC5C5200761FC0 /* PlantCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E313342ADC5C5200761FC0 /* PlantCollectionViewController.swift */; };
+		87E313352ADC5C5200761FC0 /* PlantStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E313342ADC5C5200761FC0 /* PlantStoreViewController.swift */; };
 		87E313372ADC725300761FC0 /* PlantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E313362ADC725300761FC0 /* PlantCell.swift */; };
 		87E313392ADC750500761FC0 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E313382ADC750500761FC0 /* Plant.swift */; };
 		87E3133D2ADDCD5700761FC0 /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E3133C2ADDCD5700761FC0 /* Extension + UIColor.swift */; };
@@ -45,7 +45,7 @@
 		87E313252ADC453B00761FC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87E313282ADC453B00761FC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87E3132A2ADC453B00761FC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		87E313342ADC5C5200761FC0 /* PlantCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCollectionViewController.swift; sourceTree = "<group>"; };
+		87E313342ADC5C5200761FC0 /* PlantStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantStoreViewController.swift; sourceTree = "<group>"; };
 		87E313362ADC725300761FC0 /* PlantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCell.swift; sourceTree = "<group>"; };
 		87E313382ADC750500761FC0 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		87E3133C2ADDCD5700761FC0 /* Extension + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 		873BB62B2AE9581E00961FC4 /* PlantCollection */ = {
 			isa = PBXGroup;
 			children = (
-				87E313342ADC5C5200761FC0 /* PlantCollectionViewController.swift */,
+				87E313342ADC5C5200761FC0 /* PlantStoreViewController.swift */,
 				873BB62F2AE95C0F00961FC4 /* PlantCollectionViewModel.swift */,
 				873BB62E2AE95B5800961FC4 /* PlantCell */,
 			);
@@ -269,7 +269,7 @@
 				87E998102AF382F4005EE1CD /* CartCell.swift in Sources */,
 				87E313372ADC725300761FC0 /* PlantCell.swift in Sources */,
 				87E3131D2ADC453900761FC0 /* AppDelegate.swift in Sources */,
-				87E313352ADC5C5200761FC0 /* PlantCollectionViewController.swift in Sources */,
+				87E313352ADC5C5200761FC0 /* PlantStoreViewController.swift in Sources */,
 				873BB62A2AE8530900961FC4 /* DataManager.swift in Sources */,
 				87E3131F2ADC453900761FC0 /* SceneDelegate.swift in Sources */,
 			);

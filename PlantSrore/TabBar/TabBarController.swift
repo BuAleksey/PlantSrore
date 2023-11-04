@@ -48,8 +48,8 @@ class TabBarController: UITabBarController {
         viewControllers = items.map { item in
             switch item {
             case .store:
-                let plantCollection = generateStoreCollection()
-                let store = UINavigationController(rootViewController: plantCollection)
+                //let plantCollection = generateStoreCollection()
+                let store = UINavigationController(rootViewController: PlantStoreViewController())
                 store.title = item.tabBarTitle
                 store.tabBarItem.image = UIImage(systemName: item.tabBarImageName)
                 return store
@@ -65,18 +65,6 @@ class TabBarController: UITabBarController {
                 return settings
             }
         }
-    }
-    
-    private func generateStoreCollection() -> UIViewController {
-        let layout = UICollectionViewFlowLayout()
-        let widthItem = view.layer.bounds.width / 2 - 24
-        let heightItem = widthItem + widthItem / 2
-        layout.itemSize = .init(width: widthItem, height: heightItem)
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 8
-        layout.sectionInset = .init(top: 16, left: 16, bottom: 35, right: 16)
-        let viewController = PlantCollectionViewController(collectionViewLayout: layout)
-        return viewController
     }
     
     private func setTabBarAppearance() {

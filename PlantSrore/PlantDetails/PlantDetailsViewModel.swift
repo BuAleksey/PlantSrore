@@ -27,7 +27,7 @@ final class PlantDetailsViewModel: PlantDetailsViewModelProtocol {
     }
     
     var price: String {
-        String(plant.pice.formatted()) + " rub"
+        String(plant.price.formatted()) + " rub"
     }
     
     var isFavorite: Bool {

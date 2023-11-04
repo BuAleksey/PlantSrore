@@ -28,6 +28,7 @@ final class PlantCellViewModal: PlantCellViewModalProtocol {
     
     var amountIsZero: (() -> Void)?
     
+    private let data = DataManager.shared
     private var plant: Plant
     
     init(plant: Plant) {
@@ -35,18 +36,18 @@ final class PlantCellViewModal: PlantCellViewModalProtocol {
     }
     
     func updatePlant() {
-        guard let currentPlant = DataManager.shared.getPlant(id: plant.id) else { return }
+        guard let currentPlant = data.getPlant(id: plant.id) else { return }
         plant = currentPlant
     }
     
     func cartBtnDidPress(complition: @escaping ((Int) -> Void)) {
-        DataManager.shared.changeAmount(for: plant.id, calculate: .plus)
+        data.changeAmount(for: plant.id, calculate: .plus)
         updatePlant()
         complition(plant.amount)
     }
     
     func addBtnDidPress(complition: @escaping ((Int) -> Void)) {
-        DataManager.shared.changeAmount(for: plant.id, calculate: .plus)
+        data.changeAmount(for: plant.id, calculate: .plus)
         updatePlant()
         complition(plant.amount)
     }
@@ -55,7 +56,7 @@ final class PlantCellViewModal: PlantCellViewModalProtocol {
         if amount == 1 {
             amountIsZero!()
         }
-        DataManager.shared.changeAmount(for: plant.id, calculate: .minus)
+        data.changeAmount(for: plant.id, calculate: .minus)
         updatePlant()
         complition(amount)
     }

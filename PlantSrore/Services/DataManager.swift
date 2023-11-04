@@ -14,13 +14,17 @@ enum Counter {
 
 final class DataManager {
     static let shared = DataManager()
+    let freeDeliveryMinSum = 999.0
+    let deliveryCost = 300.0
     
     var catalog: [Plant] {
         return data
     }
-    
     var cart: [Plant] {
         data.filter { $0.amount > 0 }
+    }
+    var totalSum: Double {
+        cart.map { $0.price * Double($0.amount) }.reduce(0,+)
     }
     
     private var data = Plant.getPlants()
@@ -45,5 +49,9 @@ final class DataManager {
         case .minus:
             data[index].amount -= 1
         }
+    }
+    
+    func calculateTotalSum() -> Double {
+        totalSum >= freeDeliveryMinSum ? totalSum : totalSum + deliveryCost
     }
 }

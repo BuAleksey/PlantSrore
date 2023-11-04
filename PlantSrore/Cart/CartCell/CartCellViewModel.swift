@@ -29,7 +29,8 @@ final class CartCellViewModel: CartCellViewModelProtocol {
     
     var amountIsZero: (() -> Void)?
     var amountIsNotZero: (() -> Void)?
-        
+    
+    private let data = DataManager.shared
     private var plant: Plant
     
     init(plant: Plant) {
@@ -37,7 +38,7 @@ final class CartCellViewModel: CartCellViewModelProtocol {
     }
     
     func updatePlant() {
-        guard let currentPlant = DataManager.shared.getPlant(id: plant.id) else { return }
+        guard let currentPlant = data.getPlant(id: plant.id) else { return }
         plant = currentPlant
     }
     
@@ -45,7 +46,7 @@ final class CartCellViewModel: CartCellViewModelProtocol {
         if amount == 0 {
             amountIsNotZero!()
         }
-        DataManager.shared.changeAmount(for: plant.id, calculate: .plus)
+        data.changeAmount(for: plant.id, calculate: .plus)
         updatePlant()
         complition(plant.amount)
     }
@@ -54,7 +55,7 @@ final class CartCellViewModel: CartCellViewModelProtocol {
         if amount == 1 {
             amountIsZero!()
         }
-        DataManager.shared.changeAmount(for: plant.id, calculate: .minus)
+        data.changeAmount(for: plant.id, calculate: .minus)
         updatePlant()
         complition(amount)
     }

@@ -24,6 +24,7 @@ class PlantCell: UICollectionViewCell {
             amountLabel.text = viewModel.amount.formatted()
         }
     }
+    var delegte: PlantStoreViewControllerDelegate?
     
     private let imageView = UIImageView()
     private let cartBtn = UIButton(type: .system)
@@ -117,17 +118,20 @@ class PlantCell: UICollectionViewCell {
             setupSecondUI()
             amountLabel.text = amount.formatted()
         }
+        delegte?.updateDeliveryView()
     }
     
     @objc private func addBtnPressed() {
         viewModel.addBtnDidPress { [unowned self] amount in
             amountLabel.text = amount.formatted()
         }
+        delegte?.updateDeliveryView()
     }
     
     @objc private func cutBtnPressed() {
         viewModel.cutBtnDidPress { [unowned self] amount in
             amountLabel.text = amount.formatted()
         }
+        delegte?.updateDeliveryView()
     }
 }
