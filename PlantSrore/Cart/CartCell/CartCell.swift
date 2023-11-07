@@ -48,7 +48,6 @@ class CartCell: UITableViewCell {
         
         view.backgroundColor = .white
         view.layer.cornerRadius = 10
-        view.layer.opacity = 1
         
         nameLabel.font = .systemFont(ofSize: 16, weight: .semibold)
         
@@ -78,10 +77,10 @@ class CartCell: UITableViewCell {
         view.addSubview(addBtn)
         
         view.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(8)
-            make.height.equalToSuperview().offset(-10)
+            make.top.equalTo(contentView.snp.top).offset(5)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-16)
+            make.leading.equalTo(contentView.snp.leading).offset(16)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-5)
         }
         
         nameLabel.snp.makeConstraints { make in

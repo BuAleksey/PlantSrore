@@ -8,12 +8,17 @@
 import Foundation
 
 protocol CartTableViewModelProtocol {
+    var cartIsEmpty: Bool { get }
     func fetchPlants(complition: @escaping() -> Void)
     func numberOfRows() -> Int
     func getCartCellViewModel(at indexPath: IndexPath) -> CartCellViewModelProtocol
+    func makeOrder()
 }
 
 final class CartTableViewModel: CartTableViewModelProtocol {
+    var cartIsEmpty: Bool {
+        plants.isEmpty
+    }
     private let data = DataManager.shared
     private var plants: [Plant] = []
     
@@ -32,5 +37,9 @@ final class CartTableViewModel: CartTableViewModelProtocol {
     
     func reloadTab(complition: @escaping () -> Void) {
         complition()
+    }
+    
+    func makeOrder() {
+        data.clearCart()
     }
 }

@@ -1,35 +1,28 @@
 //
-//  PlantDetailsViewModel.swift
+//  FavoriteCellViewModel.swift
 //  PlantSrore
 //
-//  Created by Buba on 24.10.2023.
+//  Created by Buba on 07.11.2023.
 //
 
 import Foundation
 
-protocol PlantDetailsViewModelProtocol {
+protocol FavoriteCellViewModelProtocol {
     var name: String { get }
     var imageName: String { get }
-    var price: String { get }
     var isFavorite: Bool { get }
-    var viewModelDidChange: ((PlantDetailsViewModelProtocol) -> Void)? { get set }
+    var viewModelDidChange: ((FavoriteCellViewModelProtocol) -> Void)? { get set }
     init(plant: Plant)
     func favoriteBtnPressed()
 }
 
-final class PlantDetailsViewModel: PlantDetailsViewModelProtocol {
+final class FavoriteCellViewModel: FavoriteCellViewModelProtocol {
     var name: String {
         plant.name
     }
-    
     var imageName: String {
         plant.imageName
     }
-    
-    var price: String {
-        String(plant.price.formatted()) + "₽"
-    }
-    
     var isFavorite: Bool {
         get {
             plant.isFavorite
@@ -38,10 +31,10 @@ final class PlantDetailsViewModel: PlantDetailsViewModelProtocol {
             viewModelDidChange?(self)
         }
     }
+    var viewModelDidChange: ((FavoriteCellViewModelProtocol) -> Void)?
     
-    var viewModelDidChange: ((PlantDetailsViewModelProtocol) -> Void)?
-    
-    private var plant: Plant 
+    private let data = DataManager.shared
+    private var plant: Plant
     
     init(plant: Plant) {
         self.plant = plant

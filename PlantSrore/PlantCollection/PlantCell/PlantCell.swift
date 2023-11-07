@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class PlantCell: UICollectionViewCell {
+final class PlantCell: UICollectionViewCell {
     var viewModel: PlantCellViewModalProtocol! {
         didSet {
             setupDefaultUI()

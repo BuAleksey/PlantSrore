@@ -23,6 +23,9 @@ final class DataManager {
     var cart: [Plant] {
         data.filter { $0.amount > 0 }
     }
+    var favorite: [Plant] {
+        data.filter { $0.isFavorite }
+    }
     var totalSum: Double {
         cart.map { $0.price * Double($0.amount) }.reduce(0,+)
     }
@@ -53,5 +56,11 @@ final class DataManager {
     
     func calculateTotalSum() -> Double {
         totalSum >= freeDeliveryMinSum ? totalSum : totalSum + deliveryCost
+    }
+    
+    func clearCart() {
+        for (index, _) in data.enumerated() {
+            data[index].amount = 0
+        }
     }
 }

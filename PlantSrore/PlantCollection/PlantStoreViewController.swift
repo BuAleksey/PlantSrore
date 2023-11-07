@@ -19,7 +19,7 @@ class PlantStoreViewController: UIViewController {
     private let deliveryView = UIView()
     private let delyveryLabel = UILabel()
     private let totalSumLabel = UILabel()
-    private var viewModel: PlantCollectionViewModelProtocol! {
+    private var viewModel: PlantStoreViewModelProtocol! {
         didSet {
             viewModel.fetchPlants { [unowned self] in
                 collectionView.reloadData()
@@ -29,7 +29,7 @@ class PlantStoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = PlantCollectionViewModel()
+        viewModel = PlantStoreViewModel()
         setupUI()
         updateCartView()
     }
@@ -69,7 +69,7 @@ extension PlantStoreViewController: UICollectionViewDelegate, UICollectionViewDa
 extension PlantStoreViewController {
     private func setupUI() {
         collectionView.backgroundColor = .backgroundGray
-        configurCollectionView()
+        configurateCollectionView()
         configurNavigationBar()
         
         deliveryView.layer.cornerRadius = 10
@@ -105,14 +105,14 @@ extension PlantStoreViewController {
         }
     }
     
-    private func configurCollectionView() {
+    private func configurateCollectionView() {
         let layout = UICollectionViewFlowLayout()
         let widthItem = view.layer.bounds.width / 2 - 24
         let heightItem = widthItem + widthItem / 2
         layout.itemSize = .init(width: widthItem, height: heightItem)
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 8
-        layout.sectionInset = .init(top: 16, left: 16, bottom: 35, right: 16)
+        layout.sectionInset = .init(top: 16, left: 16, bottom: 40, right: 16)
         collectionView.collectionViewLayout = layout
         collectionView.delegate = self
         collectionView.dataSource = self

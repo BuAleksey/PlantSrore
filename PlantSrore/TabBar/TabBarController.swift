@@ -54,7 +54,7 @@ class TabBarController: UITabBarController {
                 store.tabBarItem.image = UIImage(systemName: item.tabBarImageName)
                 return store
             case .cart:
-                let cart = UINavigationController(rootViewController: CartTableViewController())
+                let cart = UINavigationController(rootViewController: CartViewController())
                 cart.title = item.tabBarTitle
                 cart.tabBarItem.image = UIImage(systemName: item.tabBarImageName)
                 return cart
