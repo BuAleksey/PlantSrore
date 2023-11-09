@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol PlantStoreViewControllerDelegate {
+protocol PlantStoreViewControllerDelegate: AnyObject {
     func updateDeliveryView()
 }
 
-class PlantStoreViewController: UIViewController {
+final class PlantStoreViewController: UIViewController {
     private let collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout()
@@ -50,7 +50,12 @@ extension PlantStoreViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(PlantCell.self)", for: indexPath) as? PlantCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "\(PlantCell.self)",
+            for: indexPath
+        ) as? PlantCell else {
+            return UICollectionViewCell()
+        }
         cell.viewModel = viewModel.getPlantCellViewModel(at: indexPath)
         cell.delegte = self
         return cell
@@ -78,6 +83,36 @@ extension PlantStoreViewController {
         
         totalSumLabel.font = .systemFont(ofSize: 15, weight: .medium)
         
+        setupConstraints()
+    }
+    
+    private func configurateCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        let widthItem = view.layer.bounds.width / 2 - 24
+        let heightItem = widthItem + widthItem / 2
+        layout.itemSize = .init(width: widthItem, height: heightItem)
+        layout.minimumLineSpacing = 8
+        layout.minimumInteritemSpacing = 8
+        layout.sectionInset = .init(top: 16, left: 16, bottom: 40, right: 16)
+        collectionView.collectionViewLayout = layout
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(
+            PlantCell.self,
+            forCellWithReuseIdentifier: "\(PlantCell.self)"
+        )
+    }
+    
+    private func configurNavigationBar() {
+        navigationItem.titleView = createCustomTitelView(titel: "PLANT STORE")
+        
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward")
+        navigationController?.navigationBar.tintColor = .black
+    }
+    
+    private func setupConstraints() {
         view.addSubview(collectionView)
         view.addSubview(deliveryView)
         deliveryView.addSubview(delyveryLabel)
@@ -103,24 +138,6 @@ extension PlantStoreViewController {
             make.trailing.equalToSuperview().offset(-16)
             make.centerY.equalTo(deliveryView.snp.centerY)
         }
-    }
-    
-    private func configurateCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        let widthItem = view.layer.bounds.width / 2 - 24
-        let heightItem = widthItem + widthItem / 2
-        layout.itemSize = .init(width: widthItem, height: heightItem)
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 8
-        layout.sectionInset = .init(top: 16, left: 16, bottom: 40, right: 16)
-        collectionView.collectionViewLayout = layout
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(PlantCell.self, forCellWithReuseIdentifier: "\(PlantCell.self)")
-    }
-    
-    private func configurNavigationBar() {
-        navigationItem.titleView = createCustomTitelView(titel: "PLANT STORE")
     }
     
     private func updateCartView() {

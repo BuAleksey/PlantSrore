@@ -14,7 +14,7 @@ enum Counter {
 
 final class DataManager {
     static let shared = DataManager()
-    let freeDeliveryMinSum = 999.0
+    let freeDeliveryMinSum = 5000.0
     let deliveryCost = 300.0
     
     var catalog: [Plant] {

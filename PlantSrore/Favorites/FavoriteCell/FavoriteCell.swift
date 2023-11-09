@@ -31,8 +31,11 @@ final class FavoriteCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setupUI() {
+}
+
+// MARK: - Private metods
+extension FavoriteCell {
+    private func setupUI() {
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 10
         contentView.layer.shadowColor = UIColor.gray.cgColor
@@ -41,7 +44,7 @@ final class FavoriteCell: UICollectionViewCell {
         
         imageView.contentMode = .scaleAspectFit
         
-        nameLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        nameLabel.font = .systemFont(ofSize: 16, weight: .medium)
         nameLabel.textAlignment = .center
         nameLabel.numberOfLines = 0
         
@@ -49,6 +52,10 @@ final class FavoriteCell: UICollectionViewCell {
         favoriteBtn.setPreferredSymbolConfiguration(.init(font: .systemFont(ofSize: 50)), forImageIn: .normal)
         favoriteBtn.addTarget(self, action: #selector(favoriteBtnPressed), for: .touchUpInside)
         
+        setupConstrains()
+    }
+    
+    private func setupConstrains() {
         contentView.addSubview(imageView)
         contentView.addSubview(favoriteBtn)
         contentView.addSubview(nameLabel)
@@ -71,11 +78,11 @@ final class FavoriteCell: UICollectionViewCell {
         }
     }
     
-    @objc private func favoriteBtnPressed() {
-        viewModel.favoriteBtnPressed()
-    }
-    
     private func setFavoriteStatus(_ status: Bool) {
         favoriteBtn.tintColor = status ? .red : .gray
+    }
+    
+    @objc private func favoriteBtnPressed() {
+        viewModel.favoriteBtnPressed()
     }
 }

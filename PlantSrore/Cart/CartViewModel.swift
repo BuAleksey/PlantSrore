@@ -13,6 +13,7 @@ protocol CartTableViewModelProtocol {
     func numberOfRows() -> Int
     func getCartCellViewModel(at indexPath: IndexPath) -> CartCellViewModelProtocol
     func makeOrder()
+    func emptyTheTrash()
 }
 
 final class CartTableViewModel: CartTableViewModelProtocol {
@@ -41,5 +42,11 @@ final class CartTableViewModel: CartTableViewModelProtocol {
     
     func makeOrder() {
         data.clearCart()
+    }
+    
+    func emptyTheTrash() {
+        if !data.cart.isEmpty {
+            data.clearCart()
+        }
     }
 }

@@ -54,6 +54,8 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
 extension FavoritesViewController {
     private func setupUI() {
         view.backgroundColor = .backgroundGray
+        collectionView.backgroundColor = .backgroundGray
+        
         configurateCollectionView()
         configurateNavigationBar()
         

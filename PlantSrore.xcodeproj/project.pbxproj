@@ -16,8 +16,10 @@
 		874FBCE52AFA0A73002693CB /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FBCE42AFA0A73002693CB /* FavoritesViewModel.swift */; };
 		874FBCE82AFA0CEE002693CB /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FBCE72AFA0CEE002693CB /* FavoriteCell.swift */; };
 		874FBCEA2AFA0DFA002693CB /* FavoriteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FBCE92AFA0DFA002693CB /* FavoriteCellViewModel.swift */; };
+		874FBCEE2AFA5D73002693CB /* Extension + UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FBCED2AFA5D73002693CB /* Extension + UIImage.swift */; };
+		874FBCF02AFBBD6D002693CB /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FBCEF2AFBBD6D002693CB /* TabBarViewModel.swift */; };
 		8776077F2ADEB6C8002565A5 /* PlantDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8776077E2ADEB6C8002565A5 /* PlantDetailsViewController.swift */; };
-		877607842ADEBC75002565A5 /* FavoritesViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877607832ADEBC75002565A5 /* FavoritesViewControllerViewController.swift */; };
+		877607842ADEBC75002565A5 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877607832ADEBC75002565A5 /* FavoritesViewController.swift */; };
 		87E3131D2ADC453900761FC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E3131C2ADC453900761FC0 /* AppDelegate.swift */; };
 		87E3131F2ADC453900761FC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E3131E2ADC453900761FC0 /* SceneDelegate.swift */; };
 		87E313212ADC453900761FC0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E313202ADC453900761FC0 /* TabBarController.swift */; };
@@ -45,8 +47,10 @@
 		874FBCE42AFA0A73002693CB /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		874FBCE72AFA0CEE002693CB /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		874FBCE92AFA0DFA002693CB /* FavoriteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCellViewModel.swift; sourceTree = "<group>"; };
+		874FBCED2AFA5D73002693CB /* Extension + UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIImage.swift"; sourceTree = "<group>"; };
+		874FBCEF2AFBBD6D002693CB /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		8776077E2ADEB6C8002565A5 /* PlantDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsViewController.swift; sourceTree = "<group>"; };
-		877607832ADEBC75002565A5 /* FavoritesViewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewControllerViewController.swift; sourceTree = "<group>"; };
+		877607832ADEBC75002565A5 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		87E313192ADC453900761FC0 /* PlantSrore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantSrore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E3131C2ADC453900761FC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87E3131E2ADC453900761FC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,7 +117,7 @@
 		873BB62D2AE9585500961FC4 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				877607832ADEBC75002565A5 /* FavoritesViewControllerViewController.swift */,
+				877607832ADEBC75002565A5 /* FavoritesViewController.swift */,
 				874FBCE42AFA0A73002693CB /* FavoritesViewModel.swift */,
 				874FBCE62AFA0CD0002693CB /* FavoriteCell */,
 			);
@@ -188,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				87E313202ADC453900761FC0 /* TabBarController.swift */,
+				874FBCEF2AFBBD6D002693CB /* TabBarViewModel.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 				87E3133C2ADDCD5700761FC0 /* Extension + UIColor.swift */,
 				87E998052AF0F284005EE1CD /* Extension + UIViewController.swift */,
 				87FBF3282AF8103A00B65B41 /* Extension + UIImageView.swift */,
+				874FBCED2AFA5D73002693CB /* Extension + UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -313,13 +319,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				874FBCF02AFBBD6D002693CB /* TabBarViewModel.swift in Sources */,
 				87E998062AF0F284005EE1CD /* Extension + UIViewController.swift in Sources */,
 				873BB6302AE95C0F00961FC4 /* PlantStoreViewModel.swift in Sources */,
 				8776077F2ADEB6C8002565A5 /* PlantDetailsViewController.swift in Sources */,
-				877607842ADEBC75002565A5 /* FavoritesViewControllerViewController.swift in Sources */,
+				877607842ADEBC75002565A5 /* FavoritesViewController.swift in Sources */,
 				87E998122AF38321005EE1CD /* CartCellViewModel.swift in Sources */,
 				874FBCE82AFA0CEE002693CB /* FavoriteCell.swift in Sources */,
 				87E9980B2AF37B69005EE1CD /* CartViewModel.swift in Sources */,
+				874FBCEE2AFA5D73002693CB /* Extension + UIImage.swift in Sources */,
 				87E9980D2AF37BB5005EE1CD /* CartViewController.swift in Sources */,
 				87E3133D2ADDCD5700761FC0 /* Extension + UIColor.swift in Sources */,
 				87E313212ADC453900761FC0 /* TabBarController.swift in Sources */,

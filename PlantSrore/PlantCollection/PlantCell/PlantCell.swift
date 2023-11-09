@@ -14,19 +14,21 @@ final class PlantCell: UICollectionViewCell {
             setupDefaultUI()
             viewModel.updatePlant()
             viewModel.amountIsNotZero { [unowned self] amount in
-                amountLabel.text = amount.formatted()
+                amountLabel.text = amount
                 setupSecondUI()
             }
             viewModel.amountIsZero = { [weak self] in
                 self?.setupDefaultUI()
             }
             imageView.image = UIImage(named: viewModel.imageName)
-            amountLabel.text = viewModel.amount.formatted()
+            nameLabel.text = viewModel.name
+            amountLabel.text = viewModel.amount
         }
     }
-    var delegte: PlantStoreViewControllerDelegate?
+    weak var delegte: PlantStoreViewControllerDelegate?
     
     private let imageView = UIImageView()
+    private let nameLabel = UILabel()
     private let cartBtn = UIButton(type: .system)
     private let addBtn = UIButton(type: .system)
     private let amountLabel = UILabel()
@@ -40,8 +42,11 @@ final class PlantCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setupDefaultUI() {
+}
+
+// MARK: - Private metods
+extension PlantCell {
+    private func setupDefaultUI() {
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 10
         contentView.layer.shadowColor = UIColor.gray.cgColor
@@ -50,6 +55,10 @@ final class PlantCell: UICollectionViewCell {
         
         imageView.contentMode = .scaleAspectFit
         
+        nameLabel.font = .systemFont(ofSize: 12, weight: .medium)
+        nameLabel.numberOfLines = 0
+        nameLabel.textAlignment = .center
+        
         cartBtn.backgroundColor = .tabbarGreenItem
         cartBtn.setTitle("Add to cart", for: .normal)
         cartBtn.setTitleColor(.white, for: .normal)
@@ -57,18 +66,7 @@ final class PlantCell: UICollectionViewCell {
         cartBtn.isHidden = false
         cartBtn.addTarget(self, action: #selector(cartBtnPressed), for: .touchUpInside)
         
-        contentView.addSubview(imageView)
-        contentView.addSubview(cartBtn)
-        
-        imageView.snp.makeConstraints { make in
-            make.edges.equalTo(contentView).inset(UIEdgeInsets(top: 10, left: 5, bottom: 100, right: 5))
-        }
-        
-        cartBtn.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-30)
-            make.centerX.equalTo(contentView.snp.centerX)
-            make.width.equalTo(150)
-        }
+        setupFirstConstraint()
     }
     
     private func setupSecondUI() {
@@ -94,20 +92,46 @@ final class PlantCell: UICollectionViewCell {
         contentView.addSubview(amountLabel)
         contentView.addSubview(cutBtn)
         
+        setupSecondConstraint()
+    }
+    
+    private func setupFirstConstraint() {
+        contentView.addSubview(imageView)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(cartBtn)
+        
+        imageView.snp.makeConstraints { make in
+            make.edges.equalTo(contentView).inset(UIEdgeInsets(top: 0, left: 5, bottom: 70, right: 5))
+        }
+        
+        nameLabel.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp.bottom).offset(10)
+            make.width.equalTo(imageView.snp.width)
+            make.centerX.equalToSuperview()
+        }
+        
+        cartBtn.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-10)
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.width.equalTo(150)
+        }
+    }
+    
+    private func setupSecondConstraint() {
         cutBtn.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-30)
+            make.bottom.equalToSuperview().offset(-10)
             make.centerX.equalTo(contentView.snp.centerX).offset(-50)
             make.width.equalTo(50)
         }
         
         amountLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-34)
+            make.bottom.equalToSuperview().offset(-14)
             make.centerX.equalTo(contentView.snp.centerX)
             make.width.equalTo(50)
         }
         
         addBtn.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-30)
+            make.bottom.equalToSuperview().offset(-10)
             make.centerX.equalTo(contentView.snp.centerX).offset(+50)
             make.width.equalTo(50)
         }
@@ -116,22 +140,23 @@ final class PlantCell: UICollectionViewCell {
     @objc private func cartBtnPressed() {
         viewModel.cartBtnDidPress { [unowned self] amount in
             setupSecondUI()
-            amountLabel.text = amount.formatted()
+            amountLabel.text = amount
         }
         delegte?.updateDeliveryView()
     }
     
     @objc private func addBtnPressed() {
         viewModel.addBtnDidPress { [unowned self] amount in
-            amountLabel.text = amount.formatted()
+            amountLabel.text = amount
         }
         delegte?.updateDeliveryView()
     }
     
     @objc private func cutBtnPressed() {
         viewModel.cutBtnDidPress { [unowned self] amount in
-            amountLabel.text = amount.formatted()
+            amountLabel.text = amount
         }
         delegte?.updateDeliveryView()
     }
 }
+

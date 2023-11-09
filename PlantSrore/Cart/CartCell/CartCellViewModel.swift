@@ -9,13 +9,13 @@ import Foundation
 
 protocol CartCellViewModelProtocol {
     var plantName: String { get }
-    var amount: Int { get }
+    var amount: String { get }
     var amountIsZero: (() -> Void)? { get set }
     var amountIsNotZero: (() -> Void)? { get set }
     init(plant: Plant)
     func updatePlant()
-    func addBtnDidPress(complition: (@escaping(Int) -> Void))
-    func cutBtnDidPress(complition: (@escaping(Int) -> Void))
+    func addBtnDidPress(complition: (@escaping(String) -> Void))
+    func cutBtnDidPress(complition: (@escaping(String) -> Void))
 }
 
 final class CartCellViewModel: CartCellViewModelProtocol {
@@ -23,8 +23,8 @@ final class CartCellViewModel: CartCellViewModelProtocol {
         plant.name
     }
     
-    var amount: Int {
-        plant.amount
+    var amount: String {
+        String(plant.amount)
     }
     
     var amountIsZero: (() -> Void)?
@@ -42,17 +42,17 @@ final class CartCellViewModel: CartCellViewModelProtocol {
         plant = currentPlant
     }
     
-    func addBtnDidPress(complition: @escaping ((Int) -> Void)) {
-        if amount == 0 {
+    func addBtnDidPress(complition: @escaping ((String) -> Void)) {
+        if Int(amount) == 0 {
             amountIsNotZero!()
         }
         data.changeAmount(for: plant.id, calculate: .plus)
         updatePlant()
-        complition(plant.amount)
+        complition(String(plant.amount))
     }
     
-    func cutBtnDidPress(complition: @escaping ((Int) -> Void)) {
-        if amount == 1 {
+    func cutBtnDidPress(complition: @escaping ((String) -> Void)) {
+        if Int(amount) == 1 {
             amountIsZero!()
         }
         data.changeAmount(for: plant.id, calculate: .minus)

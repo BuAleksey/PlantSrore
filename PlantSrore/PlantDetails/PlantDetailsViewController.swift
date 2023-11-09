@@ -8,41 +8,52 @@
 import UIKit
 import SnapKit
 
-class PlantDetailsViewController: UIViewController {
+final class PlantDetailsViewController: UIViewController {
     var viewModel: PlantDetailsViewModelProtocol! {
         didSet {
             viewModel.viewModelDidChange = { [weak self] viewModel in
                 self?.setFavoriteStatus(viewModel.isFavorite)
             }
+            navigationItem.title = viewModel.name
             imageView.image = UIImage(named: viewModel.imageName)
             nameLabel.text = viewModel.name
             priceLabel.text = viewModel.price
+            descriptionTextView.text = viewModel.description
         }
     }
-    let imageView = UIImageView()
-    let favoriteBtn = UIButton()
-    let backView = UIView()
-    let nameLabel = UILabel()
-    let priceLabel = UILabel()
+    
+    private let imageView = UIImageView()
+    private let favoriteBtn = UIButton()
+    private let backView = UIView()
+    private let nameLabel = UILabel()
+    private let priceLabel = UILabel()
+    private let descriptionTextView = UITextView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-    
+}
+
+// MARK: - Private metods
+extension PlantDetailsViewController {
     private func setupUI() {
-        navigationItem.title = "Plant"
-        
         view.backgroundColor = .backgroundGray
         
         imageView.contentMode = .scaleAspectFit
         
         backView.backgroundColor = .tabbarGrayItem
-        backView.layer.cornerRadius = 20
+        backView.layer.cornerRadius = 50
+        backView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
         nameLabel.font = .systemFont(ofSize: 30, weight: .bold)
+        nameLabel.numberOfLines = 0
         
-        priceLabel.font = .systemFont(ofSize: 20)
+        priceLabel.font = .systemFont(ofSize: 15)
+        
+        descriptionTextView.font = .systemFont(ofSize: 16)
+        descriptionTextView.backgroundColor = .clear
+        descriptionTextView.isEditable = false
         
         favoriteBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         favoriteBtn.setPreferredSymbolConfiguration(.init(font: .systemFont(ofSize: 50)), forImageIn: .normal)
@@ -58,40 +69,47 @@ class PlantDetailsViewController: UIViewController {
         view.addSubview(backView)
         view.addSubview(nameLabel)
         view.addSubview(priceLabel)
+        view.addSubview(descriptionTextView)
         
-        imageView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            $0.bottom.equalTo(view).inset(view.bounds.height / 2)
+        imageView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.bottom.equalTo(view).inset(view.bounds.height / 2)
         }
         
-        favoriteBtn.snp.makeConstraints {
-            $0.width.equalTo(50)
-            $0.height.equalTo(40)
-            $0.trailing.equalTo(imageView.snp.trailing).offset(-16)
-            $0.bottom.equalTo(imageView.snp.bottom).offset(-16)
+        favoriteBtn.snp.makeConstraints { make in
+            make.width.equalTo(50)
+            make.height.equalTo(40)
+            make.trailing.equalTo(imageView.snp.trailing).offset(-16)
+            make.bottom.equalTo(imageView.snp.bottom).offset(-16)
         }
         
-        backView.snp.makeConstraints {
-            $0.leading.trailing.bottom.equalTo(view)
-            $0.top.equalTo(imageView.snp.bottom).offset(30)
+        backView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalTo(view)
+            make.top.equalTo(imageView.snp.bottom).offset(30)
         }
         
-        nameLabel.snp.makeConstraints {
-            $0.top.equalTo(imageView.snp.bottom).offset(60)
-            $0.centerX.equalToSuperview()
+        nameLabel.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp.bottom).offset(60)
+            make.centerX.equalToSuperview()
         }
         
-        priceLabel.snp.makeConstraints {
-            $0.top.equalTo(nameLabel.snp.bottom).offset(30)
-            $0.centerX.equalToSuperview()
+        priceLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
         }
-    }
-    
-    @objc private func favoriteBtnPressed() {
-        viewModel.favoriteBtnPressed()
+        
+        descriptionTextView.snp.makeConstraints { make in
+            make.top.equalTo(priceLabel.snp.bottom).offset(30)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
+        }
     }
     
     private func setFavoriteStatus(_ status: Bool) {
         favoriteBtn.tintColor = status ? .red : .gray
+    }
+    
+    @objc private func favoriteBtnPressed() {
+        viewModel.favoriteBtnPressed()
     }
 }

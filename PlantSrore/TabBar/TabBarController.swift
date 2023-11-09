@@ -26,45 +26,53 @@ enum TabBarItems {
     var tabBarImageName: String {
         switch self {
         case .store:
-            "camera.macro.circle"
+            "store"
         case .cart:
-            "cart.circle"
+            "cart"
         case .favorites:
-            "heart"
+            "favorites"
         }
     }
 }
 
-class TabBarController: UITabBarController {
+final class TabBarController: UITabBarController {
+    private let items: [TabBarItems] = [.store, .cart, .favorites]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTabBarAppearance()
         generateTabBar()
     }
     
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        setDefaultTabBarItemImage()
+        setSelectTabBarItemImage(item)
+    }
+}
+
+// MARK: - Private Metod
+extension TabBarController {
     private func generateTabBar() {
-        let items: [TabBarItems] = [.store, .cart, .favorites]
-        
         viewControllers = items.map { item in
             switch item {
             case .store:
-                //let plantCollection = generateStoreCollection()
                 let store = UINavigationController(rootViewController: PlantStoreViewController())
                 store.title = item.tabBarTitle
-                store.tabBarItem.image = UIImage(systemName: item.tabBarImageName)
+                store.tabBarItem.tag = 0
                 return store
             case .cart:
                 let cart = UINavigationController(rootViewController: CartViewController())
                 cart.title = item.tabBarTitle
-                cart.tabBarItem.image = UIImage(systemName: item.tabBarImageName)
+                cart.tabBarItem.tag = 1
                 return cart
             case .favorites:
-                let settings = UINavigationController(rootViewController: FavoritesViewController())
-                settings.title = item.tabBarTitle
-                settings.tabBarItem.image = UIImage(systemName: item.tabBarImageName)
-                return settings
+                let favorites = UINavigationController(rootViewController: FavoritesViewController())
+                favorites.title = item.tabBarTitle
+                favorites.tabBarItem.tag = 2
+                return favorites
             }
         }
+        setDefaultTabBarItemImage()
     }
     
     private func setTabBarAppearance() {
@@ -94,5 +102,107 @@ class TabBarController: UITabBarController {
         
         tabBar.tintColor = .tabbarGreenItem
         tabBar.unselectedItemTintColor = .tabbarGrayItem
+    }
+    
+    private func setSelectTabBarItemImage(_ item: UITabBarItem) {
+        switch item.title {
+        case "Store":
+            guard let viewControllerIndex = viewControllers?.firstIndex(where: {
+                $0.title == "Store"
+            }) else {
+                return
+            }
+            let image = UIImage.resizeImage(
+                UIImage(named: TabBarItems.store.tabBarImageName) ?? UIImage(),
+                with: CGSize(width: 150, height: 150)
+            )
+            viewControllers?[viewControllerIndex].tabBarItem.image = image?.withRenderingMode(
+                .alwaysOriginal
+            )
+            viewControllers?[viewControllerIndex].tabBarItem.titlePositionAdjustment = UIOffset(
+                horizontal: 0,
+                vertical: 10
+            )
+        case "Cart":
+            guard let viewControllerIndex = viewControllers?.firstIndex(where: {
+                $0.title == "Cart"
+            }) else {
+                return
+            }
+            let image = UIImage.resizeImage(
+                UIImage(named: TabBarItems.cart.tabBarImageName) ?? UIImage(),
+                with: CGSize(width: 150, height: 150)
+            )
+            viewControllers?[viewControllerIndex].tabBarItem.image = image?.withRenderingMode(
+                .alwaysOriginal
+            )
+            viewControllers?[viewControllerIndex].tabBarItem.titlePositionAdjustment = UIOffset(
+                horizontal: 0,
+                vertical: 10
+            )
+        case "Favorites":
+            guard let viewControllerIndex = viewControllers?.firstIndex(where: {
+                $0.title == "Favorites"
+            }) else {
+                return
+            }
+            let image = UIImage.resizeImage(
+                UIImage(named: TabBarItems.favorites.tabBarImageName) ?? UIImage(),
+                with: CGSize(width: 150, height: 150)
+            )
+            viewControllers?[viewControllerIndex].tabBarItem.image = image?.withRenderingMode(
+                .alwaysOriginal
+            )
+            viewControllers?[viewControllerIndex].tabBarItem.titlePositionAdjustment = UIOffset(
+                horizontal: 0,
+                vertical: 10
+            )
+        case .none:
+            print("No value")
+        case .some(let newValue):
+            print("NewValue: \(newValue)")
+        }
+    }
+    
+    private func setDefaultTabBarItemImage() {
+        viewControllers?.forEach { viewController in
+            switch viewController.tabBarItem.tag {
+            case 0:
+                let image = UIImage.resizeImage(
+                    UIImage(named: TabBarItems.store.tabBarImageName) ?? UIImage()
+                )
+                viewController.tabBarItem.image = image?.withRenderingMode(
+                    .alwaysOriginal
+                )
+                viewController.tabBarItem.titlePositionAdjustment = UIOffset(
+                    horizontal: 0,
+                    vertical: 0
+                )
+            case 1:
+                let image = UIImage.resizeImage(
+                    UIImage(named: TabBarItems.cart.tabBarImageName) ?? UIImage()
+                )
+                viewController.tabBarItem.image = image?.withRenderingMode(
+                    .alwaysOriginal
+                )
+                viewController.tabBarItem.titlePositionAdjustment = UIOffset(
+                    horizontal: 0,
+                    vertical: 0
+                )
+            case 2:
+                let image = UIImage.resizeImage(
+                    UIImage(named: TabBarItems.favorites.tabBarImageName) ?? UIImage()
+                )
+                viewController.tabBarItem.image = image?.withRenderingMode(
+                    .alwaysOriginal
+                )
+                viewController.tabBarItem.titlePositionAdjustment = UIOffset(
+                    horizontal: 0,
+                    vertical: 0
+                )
+            default:
+                print("The case not founded")
+            }
+        }
     }
 }

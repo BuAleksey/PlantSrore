@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 
-class CartViewController: UIViewController {
+final class CartViewController: UIViewController {
     private var viewModel: CartTableViewModelProtocol! {
         didSet {
             viewModel.fetchPlants { [unowned self] in
@@ -18,9 +19,12 @@ class CartViewController: UIViewController {
     }
     
     private let empryCartLabel = UILabel()
-    private let imageView = UIImageView.fromGif(frame: .zero, resourceName: "plant")
+    private let imageView: UIImageView = {
+        let imageView = UIImageView.fromGif(frame: .zero, resourceName: "plant")
+        guard let imageView = imageView else { return UIImageView() }
+        return imageView
+    }()
     private let tableView = UITableView()
-    let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .systemThinMaterialLight))
     private let orderBtn = UIButton(type: .system)
 
     override func viewDidLoad() {
@@ -49,7 +53,12 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CartCell.self)", for: indexPath) as? CartCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "\(CartCell.self)",
+            for: indexPath
+        ) as? CartCell else {
+            return UITableViewCell()
+        }
         
         cell.viewModel = viewModel.getCartCellViewModel(at: indexPath)
         
@@ -66,7 +75,12 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let fotteView = UIView()
-        orderBtn.frame = CGRect(x: tableView.frame.width / 2 - 100, y: 0, width: 200, height: 60)
+        orderBtn.frame = CGRect(
+            x: tableView.frame.width / 2 - 100,
+            y: 0,
+            width: 200,
+            height: 60
+        )
         fotteView.addSubview(orderBtn)
         return fotteView
     }
@@ -82,7 +96,6 @@ extension CartViewController {
         empryCartLabel.text = "Cart is empty.."
         empryCartLabel.font = .systemFont(ofSize: 16, weight: .regular)
         
-        guard let imageView = imageView else { return }
         imageView.animationDuration = 5
         imageView.startAnimating()
         
@@ -92,9 +105,6 @@ extension CartViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .backgroundGray
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 25, right: 0)
-        
-        blurEffectView.alpha = 0.9
-        blurEffectView.isHidden = true
 
         orderBtn.backgroundColor = .tabbarGreenItem
         orderBtn.layer.cornerRadius = 10
@@ -103,11 +113,25 @@ extension CartViewController {
         orderBtn.addTarget(self, action: #selector(orderBtnTapped), for: .touchUpInside)
         
         updateUI()
+        setupConstraints()
+    }
+    
+    private func configurateNaviationBar() {
+        navigationItem.titleView = createCustomTitelView(titel: "CART")
         
+        let trashBtn = UIBarButtonItem()
+        trashBtn.image = UIImage(systemName: "trash")
+        trashBtn.tintColor = .black
+        trashBtn.target = self
+        trashBtn.action = #selector(epmptyTheTrash)
+        
+        navigationItem.rightBarButtonItem = trashBtn
+    }
+    
+    private func setupConstraints() {
         view.addSubview(empryCartLabel)
         view.addSubview(imageView)
         view.addSubview(tableView)
-        view.addSubview(blurEffectView)
         
         empryCartLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -126,30 +150,29 @@ extension CartViewController {
             make.leading.equalTo(view.snp.leading)
             make.bottom.equalTo(view.snp.bottom)
         }
-        
-        blurEffectView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
-        }
-    }
-    
-    private func configurateNaviationBar() {
-        navigationItem.titleView = createCustomTitelView(titel: "CART")
     }
     
     private func updateUI() {
-        imageView?.isHidden = !viewModel.cartIsEmpty
+        imageView.isHidden = !viewModel.cartIsEmpty
         tableView.isHidden = viewModel.cartIsEmpty
     }
     
     @objc private func orderBtnTapped() {
         viewModel.makeOrder()
-        blurEffectView.isHidden = false
         present(OrderViewController(), animated: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [unowned self] in
             viewModel.fetchPlants { [unowned self] in
                 tableView.reloadData()
                 setupUI()
             }
+        }
+    }
+    
+    @objc private func epmptyTheTrash() {
+        viewModel.emptyTheTrash()
+        viewModel.fetchPlants { [unowned self] in
+            tableView.reloadData()
+            setupUI()
         }
     }
 }

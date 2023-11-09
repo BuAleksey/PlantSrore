@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class OrderViewController: UIViewController {
+final class OrderViewController: UIViewController {
     private let label = UILabel()
     private let imageView = UIImageView()
 
@@ -20,7 +20,8 @@ class OrderViewController: UIViewController {
         }
     }
     
-    private func setupUI() {        
+    private func setupUI() {
+        view.backgroundColor = .backgroundGray
         label.text = "Your order has been placed..."
         label.font = .systemFont(ofSize: 16, weight: .medium)
         

@@ -48,7 +48,10 @@ final class PlantStoreViewModel: PlantStoreViewModelProtocol {
     
     func validateFreeDelivery() -> String {
         let deltaSum = data.freeDeliveryMinSum - DataManager.shared.totalSum
-        let text = deltaSum > 0 ? "\(deltaSum)₽ before free delivery" : "Delivery is free"
+        let text = deltaSum
+        > 0 ? "\(deltaSum)₽ before free delivery"
+        : "Delivery is free"
+        
         return text
     }
     

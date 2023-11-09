@@ -7,14 +7,15 @@
 
 protocol PlantCellViewModalProtocol {
     var imageName: String { get }
-    var amount: Int { get }
+    var name: String { get }
+    var amount: String { get }
     var amountIsZero: (() -> Void)? { get set }
     init(plant: Plant)
     func updatePlant()
-    func cartBtnDidPress(complition: (@escaping(Int) -> Void))
-    func addBtnDidPress(complition: (@escaping(Int) -> Void))
-    func cutBtnDidPress(complition: (@escaping(Int) -> Void))
-    func amountIsNotZero(complition: (@escaping(Int) -> Void))
+    func cartBtnDidPress(complition: (@escaping(String) -> Void))
+    func addBtnDidPress(complition: (@escaping(String) -> Void))
+    func cutBtnDidPress(complition: (@escaping(String) -> Void))
+    func amountIsNotZero(complition: (@escaping(String) -> Void))
 }
 
 final class PlantCellViewModal: PlantCellViewModalProtocol {
@@ -22,8 +23,12 @@ final class PlantCellViewModal: PlantCellViewModalProtocol {
         plant.imageName
     }
     
-    var amount: Int {
-        plant.amount
+    var name: String {
+        plant.name
+    }
+    
+    var amount: String {
+        String(plant.amount)
     }
     
     var amountIsZero: (() -> Void)?
@@ -40,20 +45,20 @@ final class PlantCellViewModal: PlantCellViewModalProtocol {
         plant = currentPlant
     }
     
-    func cartBtnDidPress(complition: @escaping ((Int) -> Void)) {
+    func cartBtnDidPress(complition: @escaping ((String) -> Void)) {
         data.changeAmount(for: plant.id, calculate: .plus)
         updatePlant()
-        complition(plant.amount)
+        complition(String(plant.amount))
     }
     
-    func addBtnDidPress(complition: @escaping ((Int) -> Void)) {
+    func addBtnDidPress(complition: @escaping ((String) -> Void)) {
         data.changeAmount(for: plant.id, calculate: .plus)
         updatePlant()
-        complition(plant.amount)
+        complition(String(plant.amount))
     }
     
-    func cutBtnDidPress(complition: @escaping ((Int) -> Void)) {
-        if amount == 1 {
+    func cutBtnDidPress(complition: @escaping ((String) -> Void)) {
+        if Int(amount) == 1 {
             amountIsZero!()
         }
         data.changeAmount(for: plant.id, calculate: .minus)
@@ -61,10 +66,10 @@ final class PlantCellViewModal: PlantCellViewModalProtocol {
         complition(amount)
     }
     
-    func amountIsNotZero(complition: @escaping ((Int) -> Void)) {
-        if amount > 0 {
+    func amountIsNotZero(complition: @escaping ((String) -> Void)) {
+        if Int(amount) ?? 0 > 0 {
             updatePlant()
-            complition(plant.amount)
+            complition(String(plant.amount))
         }
     }
 }
